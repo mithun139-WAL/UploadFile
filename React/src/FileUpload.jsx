@@ -6,7 +6,7 @@ import {useState} from 'react';
 import axios from 'axios';
 
 export default function FileUpload() {
-  const [image, setImage] = useState({preview: '', data: ''});
+  const [file, setFile] = useState({preview: '', data: ''});
   const [status, setStatus] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,15 +24,15 @@ export default function FileUpload() {
       preview: URL.createObjectURL(e.target.files[0]),
       data: e.target.files[0],
     };
-    setImage(img);
+    setFile(img);
   };
   return (
     <div className="container my-5 col-lg-4 col-md-6 mx-auto">
       <form onSubmit={handleSubmit}>
         <h1>Upload file</h1>
-        {image.preview && (
+        {file.preview && (
           <img
-            src={image.preview}
+            src={file.preview}
             className="mx-auto"
             width="200"
             height="200"
